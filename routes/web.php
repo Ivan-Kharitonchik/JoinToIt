@@ -16,6 +16,10 @@ Route::get('/', function () {
 });
 
 Route::resource('companies', 'CompaniesController');
+Route::post('searchcompanies','CompaniesController@searchcompanies');
+
+Route::get('profile','UsersController@edit');
+Route::post('profile','UsersController@edit');
 
 Route::group(['middleware' => 'auth'], function () {
     //    Route::get('/link1', function ()    {

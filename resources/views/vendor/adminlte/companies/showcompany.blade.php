@@ -42,10 +42,10 @@ desired effect
 
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <h1>Edit Company</h1>
+                <h1>Show Company</h1>
                 <ol class="breadcrumb">
                     <li><a href="{{ route('companies.index') }}"><i class="fa fa-building"></i> Companies</a></li>
-                    <li class="active">Edit Company</li>
+                    <li class="active">Show Company</li>
                 </ol>
             </section>
 
@@ -57,51 +57,28 @@ desired effect
                         <h3 class="box-title">Company &nbsp;&nbsp;&nbsp;<span class="text-primary">{{$company->name}}</span></h3>
                     </div>
                     <!-- /.box-header -->
-                    <form method="POST" action="{{ route('companies.update',['company_id' => $company->id]) }}" enctype="multipart/form-data">
+
                         <div class="box-body">
-                            @if (count($errors) > 0)
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="alert alert-danger">
-                                            <strong>Errors!</strong><br>
-                                            <ul>
-                                                @foreach ($errors->all() as $error)
-                                                    <li>{{ $error }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
                             <div class="form-group">
-                                <label for="">Name <span class="text-red">*</span></label>
-                                <input name="name" type="text" class="form-control" value="{{$company->name}}">
+                                <input name="_token" type="hidden" class="form-control" value="{{csrf_token()}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input name="name" type="text" class="form-control" value="{{$company->name}}" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="">E-mail</label>
-                                <input name="email" type="text" class="form-control" value="{{$company->email}}">
+                                <input name="email" type="text" class="form-control" value="{{$company->email}}" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="">Website</label>
-                                <input name="website" type="text" class="form-control" value="{{$company->website}}">
+                                <input name="website" type="text" class="form-control" value="{{$company->website}}" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="">Current logo</label><br>
                                 <img src="{{ asset($company->logo_link) }}" alt="Logo">
                             </div>
-                            <div class="form-group">
-                                <label for="">New logo</label>
-                                <input name="logo" type="file">
-                                <p class="help-block">min. 100x100</p>
-                            </div>
-                            <input type="hidden" name="_method" value="PUT">
-                            <input name="company_id" type="hidden" class="form-control" value="{{$company->id}}">
-                            <input name="_token" type="hidden" class="form-control" value="{{csrf_token()}}">
                         </div>
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Save</button>
-                        </div>
-                    </form>
                     <!-- /.box-body -->
                 </div>
             </section><!-- /.content -->
