@@ -84,7 +84,7 @@ desired effect
                                 <label for="">Last Name <span class="text-red">*</span></label>
                                 <input name="last_name" type="text" class="form-control">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group {{ $errors->first('company_id', 'has-error') }}">
                                 <label for="">Company</label>
                                 <select id="company_id" name="company_id" class="form-control">
                                     <option value="0">...</option>
@@ -95,7 +95,7 @@ desired effect
                                     @endif
                                 </select>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group {{ $errors->first('email', 'has-error') }}">
                                 <label for="">E-mail</label>
                                 <input name="email" type="text" class="form-control">
                             </div>
