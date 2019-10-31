@@ -12,6 +12,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * Class HomeController
@@ -81,6 +82,12 @@ class CompaniesController extends Controller
         }
 
         $company->save();
+
+        $email_text = 'New company ' . $company->name . ' was created successfully';
+        $email = 'admin@admin.com';
+        Mail::send('email.company', array('key' => $email_text), function ($message) use($email) {
+            $message->to($email, 'Support')->subject('New company was created!');
+        });
 
         session()->flash('success', 'New company \'' . $company->name . '\' was added successfully');
         return redirect('/companies');
