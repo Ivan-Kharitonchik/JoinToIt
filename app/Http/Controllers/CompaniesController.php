@@ -36,7 +36,7 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        $companies = Company::all();
+        $companies = Company::paginate(10);
 
         return view('adminlte::companies.companies', compact('companies'));
     }

@@ -118,6 +118,9 @@ desired effect
                                     </tbody>
                                 </table>
                             </div>
+                            @if ( count($companies) )
+                                <?php echo $companies->appends(request()->except('page'))->links(); ?>
+                            @endif
                         @endif
                     </div>
                     <!-- /.box-body -->
@@ -134,5 +137,10 @@ desired effect
 @section('scripts')
     @include('adminlte::layouts.partials.scripts')
 @show
+<script>
+    $(document).ready(function(){
+        $('#companies_menu').addClass('active');
+    });
+</script>
 </body>
 </html>

@@ -21,8 +21,8 @@
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
             <!-- Optionally, you can add icons to the links -->
-            <li><a href="{{ url('companies') }}"><i class='fa fa-building'></i> <span>Companies</span></a></li>
-            <li><a href="{{ url('employees') }}"><i class='fa fa-users'></i> <span>Employees</span></a></li>
+            <li id="companies_menu"><a href="{{ url('companies') }}"><i class='fa fa-building'></i> <span>Companies</span></a></li>
+            <li id="employees_menu"><a href="{{ url('employees') }}"><i class='fa fa-users'></i> <span>Employees</span></a></li>
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

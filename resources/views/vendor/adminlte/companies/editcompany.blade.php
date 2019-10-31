@@ -75,11 +75,11 @@ desired effect
                             @endif
                             <div class="form-group">
                                 <label for="">Name <span class="text-red">*</span></label>
-                                <input name="name" type="text" class="form-control" value="{{$company->name}}">
+                                <input name="name" type="text" class="form-control" value="{{$company->name}}" {{ $errors->first('name', 'has-error') }}>
                             </div>
                             <div class="form-group">
                                 <label for="">E-mail</label>
-                                <input name="email" type="text" class="form-control" value="{{$company->email}}">
+                                <input name="email" type="text" class="form-control" value="{{$company->email}}" {{ $errors->first('email', 'has-error') }}>
                             </div>
                             <div class="form-group">
                                 <label for="">Website</label>
@@ -91,7 +91,7 @@ desired effect
                                     <img src="{{ asset('storage/'.str_replace('public/','',$company->logo_link)) }}" alt="Logo" style="max-width:100%;">
                                 </div>
                             @endif
-                            <div class="form-group">
+                            <div class="form-group {{ $errors->first('logo', 'has-error') }}">
                                 <label for="">New logo</label>
                                 <input name="logo" type="file">
                                 <p class="help-block">min. 100x100</p>
@@ -118,6 +118,10 @@ desired effect
 @section('scripts')
     @include('adminlte::layouts.partials.scripts')
 @show
-
+<script>
+    $(document).ready(function(){
+        $('#companies_menu').addClass('active');
+    });
+</script>
 </body>
 </html>

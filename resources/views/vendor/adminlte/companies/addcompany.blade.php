@@ -76,11 +76,11 @@ desired effect
                         <div class="form-group">
                             <input name="_token" type="hidden" class="form-control" value="{{csrf_token()}}">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group {{ $errors->first('name', 'has-error') }}">
                             <label for="">Name <span class="text-red">*</span></label>
                             <input name="name" type="text" class="form-control">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group {{ $errors->first('email', 'has-error') }}">
                             <label for="">E-mail</label>
                             <input name="email" type="text" class="form-control">
                         </div>
@@ -88,7 +88,7 @@ desired effect
                             <label for="">Website</label>
                             <input name="website" type="text" class="form-control">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group {{ $errors->first('logo', 'has-error') }}">
                             <label for="">Logo <span class="text-red">*</span></label>
                             <input name="logo" type="file">
                             <p class="help-block">min. 100x100</p>
@@ -112,6 +112,10 @@ desired effect
 @section('scripts')
     @include('adminlte::layouts.partials.scripts')
 @show
-
+<script>
+    $(document).ready(function(){
+        $('#companies_menu').addClass('active');
+    });
+</script>
 </body>
 </html>

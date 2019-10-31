@@ -37,7 +37,7 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        $employees = Employee::with('company')->get();
+        $employees = Employee::with('company')->paginate(10);
 
         return view('adminlte::employees.employees', compact('employees'));
     }
@@ -71,7 +71,7 @@ class EmployeesController extends Controller
 
         $employee->save();
 
-        session()->flash('success', 'New employee \'' . $employee->first_name . ' ' . $employee->second_name . '\' was added successfully');
+        session()->flash('success', 'New employee \'' . $employee->first_name . ' ' . $employee->last_name . '\' was added successfully');
         return redirect('/employees');
     }
 

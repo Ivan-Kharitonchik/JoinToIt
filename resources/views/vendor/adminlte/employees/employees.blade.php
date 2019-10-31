@@ -117,6 +117,9 @@ desired effect
                                     </tbody>
                                 </table>
                             </div>
+                            @if ( count($employees) )
+                                <?php echo $employees->appends(request()->except('page'))->links(); ?>
+                            @endif
                         @endif
                     </div>
                     <!-- /.box-body -->
@@ -133,5 +136,10 @@ desired effect
 @section('scripts')
     @include('adminlte::layouts.partials.scripts')
 @show
+<script>
+    $(document).ready(function(){
+        $('#employees_menu').addClass('active');
+    });
+</script>
 </body>
 </html>

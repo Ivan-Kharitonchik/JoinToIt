@@ -114,6 +114,10 @@ desired effect
 @section('scripts')
     @include('adminlte::layouts.partials.scripts')
 @show
-
+<script>
+    $(document).ready(function(){
+        $('#employees_menu').addClass('active');
+    });
+</script>
 </body>
 </html>
