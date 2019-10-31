@@ -42,10 +42,10 @@ desired effect
 
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <h1>Edit Employee</h1>
+                <h1>Show Employee</h1>
                 <ol class="breadcrumb">
                     <li><a href="{{ route('employees.index') }}"><i class="fa fa-users"></i> Employees</a></li>
-                    <li class="active">Edit Employee</li>
+                    <li class="active">Show Employee</li>
                 </ol>
             </section>
 
@@ -57,7 +57,6 @@ desired effect
                         <h3 class="box-title">Employee &nbsp;&nbsp;&nbsp;<span class="text-primary">{{$employee->first_name}} {{$employee->last_name}}</span></h3>
                     </div>
                     <!-- /.box-header -->
-                    <form method="POST" action="{{ route('employees.update',['employee_id' => $employee->id]) }}" enctype="multipart/form-data">
                         <div class="box-body">
                             @if (count($errors) > 0)
                                 <div class="row">
@@ -75,15 +74,15 @@ desired effect
                             @endif
                             <div class="form-group">
                                 <label for="">First Name <span class="text-red">*</span></label>
-                                <input name="first_name" type="text" class="form-control" value="{{$employee->first_name}}">
+                                <input name="first_name" type="text" class="form-control" value="{{$employee->first_name}}" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="">Last Name <span class="text-red">*</span></label>
-                                <input name="last_name" type="text" class="form-control" value="{{$employee->last_name}}">
+                                <input name="last_name" type="text" class="form-control" value="{{$employee->last_name}}" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="">Company</label>
-                                <select id="company_id" name="company_id" class="form-control">
+                                <select id="company_id" name="company_id" class="form-control" disabled>
                                     <option value="0">...</option>
                                     @if ( count($companies) )
                                         @foreach( $companies as $company )
@@ -94,20 +93,13 @@ desired effect
                             </div>
                             <div class="form-group">
                                 <label for="">E-mail</label>
-                                <input name="email" type="text" class="form-control" value="{{$employee->email}}">
+                                <input name="email" type="text" class="form-control" value="{{$employee->email}}" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="">Phone</label>
-                                <input name="phone" type="text" class="form-control" value="{{$employee->phone}}">
+                                <input name="phone" type="text" class="form-control" value="{{$employee->phone}}" disabled>
                             </div>
-                            <input type="hidden" name="_method" value="PUT">
-                            <input name="employee_id" type="hidden" class="form-control" value="{{$employee->id}}">
-                            <input name="_token" type="hidden" class="form-control" value="{{csrf_token()}}">
                         </div>
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Save</button>
-                        </div>
-                    </form>
                     <!-- /.box-body -->
                 </div>
             </section><!-- /.content -->

@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::resource('companies', 'CompaniesController');
 Route::post('searchcompanies','CompaniesController@searchcompanies');
 
+Route::resource('employees', 'EmployeesController');
+
 Route::get('profile','UsersController@edit');
 Route::post('profile','UsersController@edit');
 

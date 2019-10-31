@@ -148,5 +148,25 @@ class CompaniesController extends Controller
         return redirect('/companies');
     }
 
+    public function searchcompanies(){
+        $companies = Company::where('name','LIKE','%' . request('f_search') . '%')->limit(10)->get();
+
+        $c_temp = [];
+        if ( count($companies) ) {
+            foreach ($companies as $c) {
+                $c_temp_arr = [];
+                $c_temp_arr['label'] = $c->name;
+                $c_temp_arr['value'] = $c->id;
+                $c_temp[] = $c_temp_arr;
+            }
+        }
+
+        if ( count($companies) ) {
+            return response(array('success' => "true", 'org' => $c_temp), 200);
+        } else {
+            return response(array('success' => "false"), 200);
+        }
+    }
+
 
 }
