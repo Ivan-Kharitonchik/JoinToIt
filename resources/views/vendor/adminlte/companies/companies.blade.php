@@ -82,7 +82,7 @@ desired effect
                                             <th>Name</th>
                                             <th>E-mail</th>
                                             <th>Website</th>
-                                            <th>Action</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -91,7 +91,7 @@ desired effect
                                                 <td>
                                                     @if ( $company->logo_link != '' )
                                                         {{--<img src="{{ storage_path('app/'.$company->logo_link) }}" alt="Logo">--}}
-                                                        <img src="{{ asset('storage/'.str_replace('public/','',$company->logo_link)) }}" alt="Logo">
+                                                        <img src="{{ asset('storage/'.str_replace('public/','',$company->logo_link)) }}" alt="Logo" style="width:50px;">
                                                     @endif
                                                 </td>
                                                 <td>{{$company->name}}</td>

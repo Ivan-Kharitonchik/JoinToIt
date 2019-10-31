@@ -74,10 +74,12 @@ desired effect
                                 <label for="">Website</label>
                                 <input name="website" type="text" class="form-control" value="{{$company->website}}" disabled>
                             </div>
-                            <div class="form-group">
-                                <label for="">Current logo</label><br>
-                                <img src="{{ asset($company->logo_link) }}" alt="Logo">
-                            </div>
+                            @if ( $company->logo_link != '' )
+                                <div class="form-group">
+                                    <label for="">Current logo</label><br>
+                                    <img src="{{ asset('storage/'.str_replace('public/','',$company->logo_link)) }}" alt="Logo" style="max-width:100%;">
+                                </div>
+                            @endif
                         </div>
                     <!-- /.box-body -->
                 </div>
